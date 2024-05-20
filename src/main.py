@@ -8,7 +8,8 @@ from loguru import logger
 
 def main(args):
     print_args(args)
-    set_seed(args.seed)
+    if args.seed is not None:
+        set_seed(args.seed)
     
     # Load data
     data = load_data(args.data_dir, args.dataset, args.device, args.batch_size)

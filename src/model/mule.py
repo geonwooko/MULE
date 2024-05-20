@@ -16,6 +16,7 @@ class BPRLoss(nn.Module):
 
 
 class MULE(nn.Module):
+    '''Multi-Grained Graph Learning for Multi-Behavior Recommendation'''
     def __init__(self, data, emb_dim, gnn_layers, tda_layers):
         super(MULE, self).__init__()
         self.edge_dict = data['edge_dict']
@@ -35,8 +36,8 @@ class MULE(nn.Module):
         self.mga = MGA(emb_dim, self.bsg_types, self.trbg_types)
         self.bpr_loss = BPRLoss()
 
-        self.user_embedding = nn.Embedding(self.n_users+1, emb_dim) # index 0 is padding
-        self.item_embedding = nn.Embedding(self.n_items+1, emb_dim) # index 0 is padding
+        self.user_embedding = nn.Embedding(self.n_users+1, emb_dim, padding_idx=0) # index 0 is padding
+        self.item_embedding = nn.Embedding(self.n_items+1, emb_dim, padding_idx=0) # index 0 is padding
         
         self.convs = nn.ModuleDict()
         for behavior_type in self.total_behaviors:

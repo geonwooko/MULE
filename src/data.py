@@ -63,7 +63,7 @@ class BPRDataset(Dataset):
 
 
 def convert_edge(edge_list, n_users):
-    # Item index starts from n_users + 2
+    # Item index starts from n_users+1
     edge_list[1] += n_users + 1
     # Add reverse item to user edges 
     edge_list = torch.cat([edge_list, edge_list.flip(0)], dim=1)
@@ -92,7 +92,7 @@ def load_data(data_dir, dataset, device, batch_size):
     test_dataset = BPRDataset(test_buy, n_items)
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, pin_memory=True, num_workers=8)
     test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, pin_memory=True, num_workers=8)
-    test_gt_length = [len(items) for items in test_buy.values()]
+    test_gt_length = np.array([len(items) for items in test_buy.values()])
     
     data = dict()
     data['edge_dict'] = edge_dict

@@ -5,6 +5,9 @@ from torch_scatter import scatter_add, scatter_softmax
 from torch_geometric.nn.conv import MessagePassing
 
 class GraphConvLayer(MessagePassing):
+    """
+    Lightweight Graph Convolution Layer which supports gcn and tda normalization.
+    """
     def __init__(self, in_channels, out_channels, norm_type):
         super(GraphConvLayer, self).__init__(aggr='add')
         self.in_channels = in_channels
@@ -24,7 +27,7 @@ class GraphConvLayer(MessagePassing):
     def tda_norm(self, edge_index, x, target_emb, num_nodes):
         key, query = edge_index[0], edge_index[1] # row, col
         attention_score = (target_emb[key] * x[query]).sum(dim=-1, keepdim=True)
-        edge_weight = scatter_softmax(attention_score, key, dim=0)
+        edge_weight = scatter_softmax(attention_score, key, dim=0, dim_size=num_nodes)
         return edge_index, edge_weight
         
     def forward(self, x, edge_index, target_emb=None):

@@ -3,10 +3,6 @@ import torch
 import numpy as np
 import random
 from loguru import logger
-
-def create_directory(directory):
-    if not os.path.exists(directory):
-        os.makedirs(directory)
         
 def print_args(args):
     for k,v in vars(args).items():

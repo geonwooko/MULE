@@ -1,5 +1,6 @@
 import torch
 import numpy as np
+import os
 
 from loguru import logger
 from tqdm import tqdm
@@ -11,7 +12,7 @@ class Trainer:
         self.data = data
         self.args = args
         self.topk = args.topk
-        self.optimizer = torch.optim.Adam(self.model.parameters(), lr=args.lr)
+        self.optimizer = torch.optim.Adam(self.model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
         
     def train_epoch(self, epoch):
         self.model.train()
@@ -38,7 +39,11 @@ class Trainer:
             pbar.set_description(f'Epoch {epoch+1} total loss: {loss:.4f}')
             pbar.update()
 
-        torch.save(self.model.state_dict(), f'{self.args.checkpoint_dir}/{self.args.dataset}/model.pt')
+        # Save trained model
+        checkpoint_dir = os.path.join(self.args.checkpoint_dir, self.args.dataset)
+        if not os.path.exists(checkpoint_dir):
+            os.makedirs(checkpoint_dir)
+        torch.save(self.model.state_dict(), f'{checkpoint_dir}/model.pt')
 
     def evaluate(self):
         device = self.args.device
