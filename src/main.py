@@ -1,7 +1,7 @@
 import os
 import torch
 from data import load_data
-from model import MULE, Trainer
+from model import MuLe, Trainer
 from parser import parse_args
 from utils import set_seed, print_args
 from loguru import logger
@@ -15,7 +15,7 @@ def main(args):
     data = load_data(args.data_dir, args.dataset, args.device, args.batch_size)
     
     # Build model
-    model = MULE(data, args.emb_dim, args.gnn_layers, args.tda_layers).to(args.device)
+    model = MuLe(data, args.emb_dim, args.gnn_layers, args.tda_layers).to(args.device)
     trainer = Trainer(model, data, args)
     
     if args.load_checkpoint:

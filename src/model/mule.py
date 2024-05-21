@@ -15,10 +15,10 @@ class BPRLoss(nn.Module):
         return loss.mean()
 
 
-class MULE(nn.Module):
+class MuLe(nn.Module):
     '''Multi-Grained Graph Learning for Multi-Behavior Recommendation'''
     def __init__(self, data, emb_dim, gnn_layers, tda_layers):
-        super(MULE, self).__init__()
+        super(MuLe, self).__init__()
         self.edge_dict = data['edge_dict']
         
         self.n_users = data['n_users']
@@ -79,7 +79,6 @@ class MULE(nn.Module):
             emb_dict[behavior_type] = bsg_emb
         
         ## Target-related behavior graph aggregation ##
-        
         # Target-intersected behavior graph aggregation
         for behavior_type in self.tib_types:
             previous_behavior = behavior_type.split('_')[0] # view or cart or collect

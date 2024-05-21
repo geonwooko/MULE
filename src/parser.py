@@ -1,7 +1,7 @@
 import argparse
 
 def parse_args():
-    parser = argparse.ArgumentParser(description='MUG Settings')
+    parser = argparse.ArgumentParser(description='MuLe Settings')
     parser.add_argument('--dataset', type=str, default='taobao', help='Dataset name')
     parser.add_argument('--data_dir', type=str, default='./data', help='Directory containing the data')
     parser.add_argument('--checkpoint_dir', type=str, default='./checkpoint', help='Directory of model checkpoint')
