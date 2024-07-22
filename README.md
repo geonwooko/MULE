@@ -69,7 +69,7 @@ python ./src/main.py --dataset jdata \
 ```
 
 ### Use a pre-trained MuLe
-Because of the volume limit of the anonymous github, we provide the pre-trained parameters of MuLe for each dataset in [google drive](https://drive.google.com/drive/folders/1L5wnVGQ6EhBy9wyPJTOxsU9JD7zIIvrc?usp=sharing). 
+Because of the volume limit of the github, we provide the pre-trained parameters of MuLe for each dataset in [google drive](https://drive.google.com/drive/folders/1L5wnVGQ6EhBy9wyPJTOxsU9JD7zIIvrc?usp=sharing). 
 You can download the pre-trained files as follows:
 ```bash
 gdown --folder https://drive.google.com/drive/folders/1L5wnVGQ6EhBy9wyPJTOxsU9JD7zIIvrc 
@@ -127,3 +127,4 @@ You can train and evaluate your own dataset with custom hyperparameters as follo
 |`seed`|random seed; If None, the seed is not fixed|42|
 |`device`| training device | cuda:0|
 |`topk`| Top-k items | 10|
+
