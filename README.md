@@ -88,7 +88,18 @@ The test performance of the pre-trained MuLE for each dataset is as follows:
 All experiments are conducted on RTX 4090 (24GB) with cuda version 11.8, and the above results were reproduced with the random seed `seed=42`.
 
 The reported results in the paper are as follows:  
-![performance](./assets/performance.png)
+| Model   | HR@10            |           |           | NDCG@10         |           |           |
+|---------|------------------|-----------|-----------|-----------------|-----------|-----------|
+|         | Taobao           | Tmall     | Jdata     | Taobao          | Tmall     | Jdata     |
+| LightGCN| 0.0411           | 0.0393    | 0.2252    | 0.0240          | 0.0209    | 0.1436    |
+| CRGCN   | 0.0855           | 0.0840    | 0.5001    | 0.0439          | 0.0442    | 0.2914    |
+| MB-CGCN | 0.1233           | 0.0984    | 0.4349    | 0.0677          | 0.0558    | 0.2758    |
+| HPMR    | 0.1104           | 0.0956    | -         | 0.0599          | 0.0515    | -         |
+| PKEF    | 0.1385           | 0.1277    | 0.4334    | 0.0785          | 0.0721    | 0.2615    |
+| MB-HGCN | 0.1299           | 0.1443    | 0.5406    | 0.0690          | 0.0769    | 0.3555    |
+| MuLE    | **0.1918**       | **0.2112**| **0.5889**| **0.1103**      | **0.1177**| **0.4061**|
+| % diff  | 38.5%            | 44.6%     | 10.3%     | 40.5%           | 52.9%     | 25.4%     |
+
 
 ### Validated hyperparameters of MuLe
 We provide the validated hyperparameters of MuLe for each dataset to ensure reproducibility.
