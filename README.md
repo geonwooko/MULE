@@ -1,5 +1,5 @@
 # MuLe
-This is the official code for **MuLe** (Multi-Grained Graph Learning for Multi-Behavior Recommendation), accepted to CIKM 2024.
+This is the official code for [**MuLe** (Multi-Grained Graph Learning for Multi-Behavior Recommendation)](https://dl.acm.org/doi/10.1145/3627673.3679709), accepted to CIKM 2024.
 ![overview](./assets/overview.png)
 
 
@@ -148,4 +148,16 @@ You can train and evaluate your own dataset with custom hyperparameters as follo
 |`seed`|random seed; If None, the seed is not fixed|42|
 |`device`| training device | cuda:0|
 |`topk`| Top-k items | 10|
+
+## Citation
+Please cite the paper if you use this code in your own work:
+```
+@inproceedings{10.1145/3627673.3679709,
+author = {Lee, Seunghan and Ko, Geonwoo and Song, Hyun-Je and Jung, Jinhong},
+title = {MuLe: Multi-Grained Graph Learning for Multi-Behavior Recommendation},
+year = {2024},
+booktitle = {ACM International Conference on Information and Knowledge Management},
+url = {https://doi.org/10.1145/3627673.3679709}
+}
+```
 
